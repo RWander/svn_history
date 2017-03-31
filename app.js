@@ -5,7 +5,6 @@ var app = require('koa')()
   , onerror = require('koa-onerror');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 
 // error handler
 onerror(app);
@@ -30,6 +29,5 @@ app.use(require('koa-static')(__dirname + '/public'));
 
 // routes definition
 app.use(index.routes(), index.allowedMethods());
-app.use(users.routes(), users.allowedMethods());
 
 module.exports = app;
