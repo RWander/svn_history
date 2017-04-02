@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "lint": "./node_modules/.bin/eslint .; exit 0"
+    "debug": "node debug ./bin/www",
+    "lint": "./node_modules/.bin/eslint ."
   },
   "dependencies": {
     "co": "^4.6.0",
     "debug": "^2.6.3",
+    "execa": "^0.6.3",
     "jade": "~1.11.0",
     "koa": "^1.4.0",
     "koa-bodyparser": "^2.5.0",
