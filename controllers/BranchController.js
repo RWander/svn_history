@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const execa = require('execa');
 const Branch = require('../models/Branch');
 
@@ -16,19 +14,14 @@ const {
 
 module.exports = class BranchController {
   constructor() {
-    this._getBranches();
   }
 
   getBranches() {
-    return this.branches;
-  }
-
-  _getBranches() {
     return Promise.all([
       this._getBranchesInFolder(iEI_RELEASES),
       this._getBranchesInFolder(iPEP_RELEASES),
     ]).then(values => {
-      this.branches = [
+      return [
         new Branch(iEI_TRUNK, `${REPO}/${iEI_TRUNK}`, iEI_PROJECT),
         new Branch(iPEP_TRUNK, `${REPO}/${iPEP_TRUNK}`, iPEP_PROJECT),
         ...[values[0].map(v => new Branch(v, `${REPO}/${v}`, iEI_PROJECT))],
